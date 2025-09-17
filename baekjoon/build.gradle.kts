@@ -1,3 +1,6 @@
+import org.gradle.api.GradleException
+import org.gradle.api.tasks.JavaExec
+
 plugins {
     kotlin("jvm") version "2.0.21"
     application
@@ -15,6 +18,23 @@ kotlin {
 }
 
 application {
-    // 실행할 메인 클래스 지정 (문제마다 바꿔주면 됨)
-    mainClass.set("")
+    mainClass.set("baekjoon.runner.RunnerKt")
+}
+
+val runProblem by tasks.registering(JavaExec::class) {
+    group = "application"
+    description = "Run a specific Baekjoon solution with -PproblemId=xxxx"
+    val problemIdProvider = project.providers.gradleProperty("problemId")
+    mainClass.set("baekjoon.runner.RunnerKt")
+    classpath = sourceSets["main"].runtimeClasspath
+    doFirst {
+        if (!problemIdProvider.isPresent) {
+            throw GradleException("Please provide -PproblemId=1234")
+        }
+        args = listOf(problemIdProvider.get())
+    }
+}
+
+tasks.withType(JavaExec::class).configureEach {
+    standardInput = System.`in`
 }
