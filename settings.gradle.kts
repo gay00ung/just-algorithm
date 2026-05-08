@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "just-algorithm"
 include(":baekjoon")
+
+include(":leetcode")
