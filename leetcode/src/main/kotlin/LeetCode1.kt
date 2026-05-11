@@ -1,6 +1,6 @@
 package org.example
 
-class Solution {
+class LeetCode1 {
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val size = nums.size
         val array = arrayOfNulls<Int>(2)

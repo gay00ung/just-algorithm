@@ -9,7 +9,7 @@ package org.example
  *     var next: ListNode? = null
  * }
  */
-class Solution {
+class LeetCode2 {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
         var head1 = l1
         var head2 = l2

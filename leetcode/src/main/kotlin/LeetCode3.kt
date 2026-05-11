@@ -1,6 +1,6 @@
 package org.example
 
-class Solution {
+class LeetCode3 {
     fun lengthOfLongestSubstring(s: String): Int {
         var start = 0
         var maxLength = 0
