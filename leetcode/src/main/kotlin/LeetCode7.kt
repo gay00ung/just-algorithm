@@ -1,11 +1,15 @@
 class LeetCode7 {
     fun reverse(x: Int): Int {
-        return if (x > 0) {
-            x.toString().reversed().toInt()
+        if (x < Int.MIN_VALUE || x > Int.MAX_VALUE) {
+            return 0
+        }
+
+        if (x > 0) {
+            return x.toString().reversed().toInt()
         } else if (x == 0) {
-            0
+            return 0
         } else {
-            -x.toString().drop(1).reversed().toInt()
+            return -x.toString().drop(1).reversed().toInt()
         }
     }
 }
